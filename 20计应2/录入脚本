@@ -1,0 +1,155 @@
+let names = `曹少辉
+邓小洁
+刘成杰
+朱辉桦
+朱涛
+陈云忠
+李巧云
+周蔚波
+吴邦
+罗勇
+邓政南
+张振鹏
+方子洋
+张世民
+温辉
+陈斌
+方世文
+邓明
+徐佳乐
+陈铖
+查岳晨
+徐文龙
+王震
+黄海洋
+叶贤晨
+谢妍蓉
+谢人娟
+王平
+余鑫
+吴玲丹
+王乐红
+虎智仁
+梅忠华
+金超
+胡端发
+夏盛强
+邓德鹏
+严辉斌
+杨金强
+肖海鹏
+叶铭鹏
+刘嘉健
+朱宁
+肖贤东
+杨腾辉
+邓海泷
+袁文强
+黄其璐
+黎小龙
+徐志军
+俞玲辉
+项紫强
+吴锦涛
+金晨帆
+陈欢
+张仲先
+刘辉
+尧强华
+章日升
+甘俊威
+车亚宇
+尧科祥
+赵剑文`.trim().split("\n");
+let arrs = `0	0	0	0
+75	90	80	35
+76	100	77	44
+69	100	78	34
+82	100	80	69
+80	100	80	61
+81	100	81	63
+79	90	75	58
+80	100	80	52
+0	0	0	12
+76	95	85	60
+86	95	86	83
+80	95	59	74
+0	0	0	0
+82	100	84	67
+83	100	83	65
+0	0	0	0
+70	100	83	56
+79	100	84	67
+78	100	81	52
+75	100	75	45
+78	95	81	50
+77	100	81	45
+83	59	59	64
+0	0	0	0
+88	95	88	41
+80	100	86	46
+77	100	76	51
+75	95	83	53
+0	0	0	0
+78	95	77	53
+74	100	59	51
+0	0	0	0
+0	0	0	0
+78	100	77	55
+72	100	77	55
+81	100	80	61
+75	100	75	38
+83	100	85	74
+79	100	80	58
+81	90	81	63
+87	100	87	84
+60	100	75	20
+86	100	83	72
+80	100	82	63
+85	100	87	85
+79	100	82	63
+80	100	75	51
+83	95	82	61
+60	90	80	25
+79	90	81	64
+77	90	78	51
+83	100	82	61
+66	100	81	32
+74	100	79	50
+80	100	85	64
+81	100	82	69
+0	0	0	0
+80	95	59	57
+67	100	81	23
+84	100	81	68
+0	0	0	0
+0	0	0	0`
+.trim();
+let nameMap = {};
+let nameEles = document.querySelectorAll("input[name='b']");
+nameEles.forEach((nameEle)=>{
+ nameMap[nameEle.value] = names.indexOf(nameEle.value);
+})
+let xxxs=new Array(4);
+xxxs[0] = [];
+xxxs[1] = [];
+xxxs[2] = [];
+xxxs[3] = [];
+let lines = arrs.split("\n");
+lines.forEach((line,ii)=>{
+ let cols = lines[ii].split('\t');
+ cols.forEach((col,jj)=>{
+  xxxs[jj].push(col);
+ })
+})
+let cs = new Array(4);
+cs[0] = document.querySelectorAll("input[name='c']");
+cs[1] = document.querySelectorAll("input[name='d']");
+cs[2] = document.querySelectorAll("input[name='e']");
+cs[3] = document.querySelectorAll("input[name='h']");
+xxxs.forEach((xxx,ii)=>{
+ xxx.forEach((value,jj)=>{
+  console.log(cs[ii][jj])
+  cs[ii][jj].value = xxx[nameMap[nameEles[jj].value]];
+ })
+})
